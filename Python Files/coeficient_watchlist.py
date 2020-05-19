@@ -22,10 +22,11 @@ for ticker in watchlist:
     stocks_df[ticker] = alphav_df['adjusted'].pct_change()
 
 #print time-series df
+stocks_df = stocks_df[1:11] # Use only the last 10 days for example purposes
 print(stocks_df.head())
 
 #print correlation between AAPL and ADBE
-print(stocks_df.AAPL.corr(stocks_df.ADBE))
+print(stocks_df.AAPL.corr(stocks_df.MSFT))
 #print correlation between AAPL and NFLX
 print(stocks_df.AAPL.corr(stocks_df.NFLX))
 
@@ -41,7 +42,7 @@ print(stocks_df.corr())
 nflx_corr_df = stocks_df.corr().NFLX
 print(nflx_corr_df[ nflx_corr_df < 1 ].idxmax())
 
-#least correlated with Netflix
+#Negatively correlated with Netflix
 print(nflx_corr_df.idxmin())
 
 
